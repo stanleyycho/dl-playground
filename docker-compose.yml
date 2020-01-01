@@ -1,0 +1,31 @@
+version: "2.3"
+
+services:
+  tensorflow_py3:
+    image: "tensorflow/tensorflow:latest-gpu-py3-jupyter"
+    runtime: nvidia
+    ports:
+      - "8888:8888"
+    volumes:
+      - /home/bs0826/dev:/tf/notebooks/dev
+      - /home/bs0826/workspace/:/tf/notebooks/workspace
+      - /mnt/data:/tf/notebooks/data
+    # environment:
+    # allow specifying a subset of GPUs to be used
+    # - CUDA_VISIBLE_DEVICES
+    restart: always
+  # tensorflow_py2:
+  #   image: "tensorflow/tensorflow:latest-gpu-jupyter"
+  #   runtime: nvidia
+  #   # environment:
+  #   #   - JUPYTER_PORT=8899
+  #   ports:
+  #     - "8899:8899"
+  #   volumes:
+  #     - /home/bs0826/dev:/tf/notebooks/dev
+  #     - /home/bs0826/workspace/:/tf/notebooks/workspace
+  #     - /mnt/data:/tf/notebooks/data
+  #   # environment:
+  #     # allow specifying a subset of GPUs to be used
+  #     # - CUDA_VISIBLE_DEVICES
+  #   restart: always
