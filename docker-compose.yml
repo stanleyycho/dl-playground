@@ -1,8 +1,16 @@
 version: "2.3"
 
 services:
+  tensorflow_py3_build:
+    build: 
+        context: .
+        dockerfile: Dockerfile
+    image: my_tensorflow:latest
+      
   tensorflow_py3:
-    image: "tensorflow/tensorflow:latest-gpu-py3-jupyter"
+    depends_on: 
+      - tensorflow_py3_build
+    image: my_tensorflow:latest
     runtime: nvidia
     ports:
       - "8888:8888"
